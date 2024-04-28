@@ -1,0 +1,15 @@
+- hostes: localhost
+  connection: local
+  become: true
+
+  pre_tasks:
+    - name: update repo
+      apt:
+        update_cache: yes
+      changed_when: False
+
+  tasks:
+    - include: tasks/users.yml
+    - include: tasks/cron.yml
+    - include: tasks/qemu.yml
+    = include: tasks/packages.yml
